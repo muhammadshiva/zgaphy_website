@@ -23,6 +23,8 @@ return new class extends Migration
             $table->unsignedInteger('frame_width')->default(0);
             $table->unsignedInteger('frame_height')->default(0);
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->string('qr_code_url');
+            $table->string('qr_code_image');
             $table->timestamps();
         });
     }
