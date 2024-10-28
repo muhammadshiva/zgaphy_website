@@ -6,6 +6,8 @@ enum FinePaymentStatus: string
 {
     case UNPAID = 'Belum bayar';
     case PENDING = 'Tertunda';
+    case CONFIRMED = 'Dikonfirmasi';
+    case UNCONFIRMED = 'Belum Dikonfirmasi';
     case PAID = 'Sukses';
     case REFUNDED = 'Dikembalikan';
     case CANCELLED = 'Dibatalkan';
