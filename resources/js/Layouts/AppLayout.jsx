@@ -2,6 +2,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Toaster } from '@/Components/ui/Toaster';
 import { Button } from '@/Components/ui/button';
 import { Head, Link } from '@inertiajs/react';
+import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import {
     IconBoxMultiple,
     IconCategory,
@@ -12,6 +13,7 @@ import {
     IconDiscount,
     IconKeyframe,
     IconLayoutKanban,
+    IconLayoutSidebar,
     IconLogout,
     IconPaint,
     IconRoute,
@@ -28,8 +30,15 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
 } from '..';
 import NavLink from '../Components/NavLink';
+import NavLinkResponsive from '../Components/NavLinkResponsive';
 
 export default function AppLayout({ title, children }) {
     return (
@@ -93,6 +102,77 @@ export default function AppLayout({ title, children }) {
                 <div className="flex w-full flex-col lg:w-4/5">
                     <header className="flex h-12 items-center justify-between gap-4 border-b px-4 lg:h-[60px] lg:justify-end lg:px-6">
                         {/* Sidebar Responsive */}
+                        <Sheet>
+                            <SheetTrigger asChild>
+                                <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+                                    <IconLayoutSidebar className="size-5" />
+                                </Button>
+                            </SheetTrigger>
+
+                            <SheetContent side="left" className="flex max-h-screen flex-col overflow-y-auto">
+                                <SheetHeader>
+                                    <SheetTitle>
+                                        <VisuallyHidden.Root>Sidebar Responsive</VisuallyHidden.Root>
+                                    </SheetTitle>
+
+                                    <SheetDescription>
+                                        <VisuallyHidden.Root>Sidebar Responsive</VisuallyHidden.Root>
+                                    </SheetDescription>
+                                </SheetHeader>
+
+                                {/* Sidebar Menu Responsive */}
+                                <nav className="grid gap-6 text-lg font-medium">
+                                    <ApplicationLogo />
+                                    <nav className="grid items-start text-sm font-semibold lg:px-4">
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Dashboard</div>
+
+                                        <NavLinkResponsive url="#" title="Dashboard" icon={IconDashboard} />
+
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Statistic</div>
+
+                                        <NavLinkResponsive
+                                            url="#"
+                                            title="Sales Report Statistics"
+                                            icon={IconChartDots2}
+                                        />
+
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Master</div>
+
+                                        <NavLinkResponsive url="#" title="Categories" icon={IconCategory} />
+                                        <NavLinkResponsive url="#" title="Artworks" icon={IconPaint} />
+                                        <NavLinkResponsive url="#" title="Collectors" icon={IconBoxMultiple} />
+                                        <NavLinkResponsive url="#" title="Users" icon={IconUsers} />
+
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">
+                                            Roles and Permission
+                                        </div>
+
+                                        <NavLinkResponsive url="#" title="Roles" icon={IconCircleKey} />
+                                        <NavLinkResponsive url="#" title="Permissions" icon={IconVersions} />
+                                        <NavLinkResponsive url="#" title="Assign Roles" icon={IconKeyframe} />
+                                        <NavLinkResponsive url="#" title="Assign Permissions" icon={IconLayoutKanban} />
+                                        <NavLinkResponsive url="#" title="Route Access" icon={IconRoute} />
+
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">
+                                            Transaction
+                                        </div>
+
+                                        <NavLinkResponsive url="#" title="Sales" icon={IconCreditCardPay} />
+
+                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Others</div>
+
+                                        <NavLinkResponsive url="#" title="Discount" icon={IconDiscount} />
+                                        <NavLinkResponsive
+                                            url={route('profile.edit')}
+                                            title="Profile"
+                                            icon={IconUser}
+                                        />
+                                        <NavLinkResponsive url="#" title="Logout" icon={IconLogout} />
+                                    </nav>
+                                </nav>
+                            </SheetContent>
+                        </Sheet>
+
                         {/* Dropdown */}
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
