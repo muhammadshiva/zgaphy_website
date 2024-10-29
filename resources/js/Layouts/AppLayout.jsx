@@ -1,7 +1,7 @@
 import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Toaster } from '@/Components/ui/Toaster';
 import { Button } from '@/Components/ui/button';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, usePage } from '@inertiajs/react';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import { IconLayoutSidebar } from '@tabler/icons-react';
 import {
@@ -24,6 +24,9 @@ import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 
 export default function AppLayout({ title, children }) {
+
+    const {url} = usePage();
+
     return (
         <>
             <Head title={title} />
@@ -41,7 +44,7 @@ export default function AppLayout({ title, children }) {
                         </div>
 
                         <div className="flex-1">
-                            <Sidebar />
+                            <Sidebar url={url}/>
                         </div>
                     </div>
                 </div>
@@ -69,7 +72,7 @@ export default function AppLayout({ title, children }) {
                                 </SheetHeader>
 
                                 {/* Sidebar Menu Responsive */}
-                                <SidebarResponsive />
+                                <SidebarResponsive url={url} />
                             </SheetContent>
                         </Sheet>
 
