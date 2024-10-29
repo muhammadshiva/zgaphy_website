@@ -1,18 +1,17 @@
-import { clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs) {
-  return twMerge(clsx(inputs))
+    return twMerge(clsx(inputs));
 }
-
 
 export const FINEPAYMENTSTATUS = {
     PENDING: 'Tertunda',
     SUCCESS: 'Sukses',
     FAILED: 'Gagal',
-}
+};
 
-export default function flashMessage(params){
+export default function flashMessage(params) {
     return params.props.flash_message;
 }
 
@@ -25,7 +24,7 @@ export const formatToRupiah = (amount) => {
     });
 
     return formatter.format(amount);
-}
+};
 
 export const message = {
     503: {
@@ -63,6 +62,4 @@ export const message = {
         description: 'Please try again in just a second',
         status: 429,
     },
-}
-
-
+};

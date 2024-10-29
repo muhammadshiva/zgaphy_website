@@ -1,18 +1,13 @@
-export default function HeaderTitle({title, subtitle, icon: Icon}){
+export default function HeaderTitle({ title, subtitle, icon: Icon }) {
     return (
-        <div
-            className="flex flex-col"
-        >
-            <div className="flex flex-row item-center gap-x-1">
-
-                <Icon className="size-6"/>
+        <div className="flex flex-col">
+            <div className="item-center flex flex-row gap-x-1">
+                <Icon className="size-6" />
 
                 <h1 className="text-lg font-bold lg:text-2xl">{title}</h1>
-
             </div>
 
             <p className="text-sm font-medium text-muted-foreground">{subtitle}</p>
-
         </div>
-    )
+    );
 }
