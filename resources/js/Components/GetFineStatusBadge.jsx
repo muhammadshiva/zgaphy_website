@@ -1,4 +1,4 @@
-import { FINEPAYMENTSTATUS } from '@/lib/utils';
+import { FINEPAYMENTSTATUS } from '../lib/utils';
 import { Badge } from 'lucide-react';
 
 export default function GetFineStatusBadges({ status }) {

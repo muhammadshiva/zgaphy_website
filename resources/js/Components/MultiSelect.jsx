@@ -15,7 +15,7 @@ import {
 } from '@/Components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/Components/ui/popover';
 import { Separator } from '@/Components/ui/separator';
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 
 /**
  * Variants for the multi-select component to handle different styles.

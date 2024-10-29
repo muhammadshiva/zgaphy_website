@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { cn } from '@lib/utils';
+import { cn } from '../lib/utils';
 import { IconInnerShadowBottomRight } from '@tabler/icons-react';
 
 export default function ApplicationLogo({ url = '#', size = 'size-9', isTitle = true }) {
