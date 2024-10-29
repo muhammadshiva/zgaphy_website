@@ -3,24 +3,7 @@ import { Toaster } from '@/Components/ui/Toaster';
 import { Button } from '@/Components/ui/button';
 import { Head, Link } from '@inertiajs/react';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
-import {
-    IconBoxMultiple,
-    IconCategory,
-    IconChartDots2,
-    IconCircleKey,
-    IconCreditCardPay,
-    IconDashboard,
-    IconDiscount,
-    IconKeyframe,
-    IconLayoutKanban,
-    IconLayoutSidebar,
-    IconLogout,
-    IconPaint,
-    IconRoute,
-    IconUser,
-    IconUsers,
-    IconVersions,
-} from '@tabler/icons-react';
+import { IconLayoutSidebar } from '@tabler/icons-react';
 import {
     Avatar,
     AvatarFallback,
@@ -37,8 +20,8 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '..';
-import NavLink from '../Components/NavLink';
-import NavLinkResponsive from '../Components/NavLinkResponsive';
+import Sidebar from './Partials/Sidebar';
+import SidebarResponsive from './Partials/SidebarResponsive';
 
 export default function AppLayout({ title, children }) {
     return (
@@ -58,42 +41,7 @@ export default function AppLayout({ title, children }) {
                         </div>
 
                         <div className="flex-1">
-                            <nav className="grid items-start px-2 text-sm font-semibold lg:px-4">
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">Dashboard</div>
-
-                                <NavLink url="#" title="Dashboard" icon={IconDashboard}></NavLink>
-
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">Statistic</div>
-
-                                <NavLink url="#" title="Sales Report Statistics" icon={IconChartDots2}></NavLink>
-
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">Master</div>
-
-                                <NavLink url="#" title="Categories" icon={IconCategory}></NavLink>
-                                <NavLink url="#" title="Artworks" icon={IconPaint}></NavLink>
-                                <NavLink url="#" title="Collectors" icon={IconBoxMultiple}></NavLink>
-                                <NavLink url="#" title="Users" icon={IconUsers}></NavLink>
-
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">
-                                    Roles and Permission
-                                </div>
-
-                                <NavLink url="#" title="Roles" icon={IconCircleKey}></NavLink>
-                                <NavLink url="#" title="Permissions" icon={IconVersions}></NavLink>
-                                <NavLink url="#" title="Assign Roles" icon={IconKeyframe}></NavLink>
-                                <NavLink url="#" title="Assign Permissions" icon={IconLayoutKanban}></NavLink>
-                                <NavLink url="#" title="Route Access" icon={IconRoute}></NavLink>
-
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">Transaction</div>
-
-                                <NavLink url="#" title="Sales" icon={IconCreditCardPay}></NavLink>
-
-                                <div className="px-3 py-2 text-sm font-semibold text-foreground">Others</div>
-
-                                <NavLink url="#" title="Discount" icon={IconDiscount}></NavLink>
-                                <NavLink url={route('profile.edit')} title="Profile" icon={IconUser}></NavLink>
-                                <NavLink url="#" title="Logout" icon={IconLogout}></NavLink>
-                            </nav>
+                            <Sidebar />
                         </div>
                     </div>
                 </div>
@@ -121,55 +69,7 @@ export default function AppLayout({ title, children }) {
                                 </SheetHeader>
 
                                 {/* Sidebar Menu Responsive */}
-                                <nav className="grid gap-6 text-lg font-medium">
-                                    <ApplicationLogo />
-                                    <nav className="grid items-start text-sm font-semibold lg:px-4">
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Dashboard</div>
-
-                                        <NavLinkResponsive url="#" title="Dashboard" icon={IconDashboard} />
-
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Statistic</div>
-
-                                        <NavLinkResponsive
-                                            url="#"
-                                            title="Sales Report Statistics"
-                                            icon={IconChartDots2}
-                                        />
-
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Master</div>
-
-                                        <NavLinkResponsive url="#" title="Categories" icon={IconCategory} />
-                                        <NavLinkResponsive url="#" title="Artworks" icon={IconPaint} />
-                                        <NavLinkResponsive url="#" title="Collectors" icon={IconBoxMultiple} />
-                                        <NavLinkResponsive url="#" title="Users" icon={IconUsers} />
-
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">
-                                            Roles and Permission
-                                        </div>
-
-                                        <NavLinkResponsive url="#" title="Roles" icon={IconCircleKey} />
-                                        <NavLinkResponsive url="#" title="Permissions" icon={IconVersions} />
-                                        <NavLinkResponsive url="#" title="Assign Roles" icon={IconKeyframe} />
-                                        <NavLinkResponsive url="#" title="Assign Permissions" icon={IconLayoutKanban} />
-                                        <NavLinkResponsive url="#" title="Route Access" icon={IconRoute} />
-
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">
-                                            Transaction
-                                        </div>
-
-                                        <NavLinkResponsive url="#" title="Sales" icon={IconCreditCardPay} />
-
-                                        <div className="px-3 py-2 text-sm font-semibold text-foreground">Others</div>
-
-                                        <NavLinkResponsive url="#" title="Discount" icon={IconDiscount} />
-                                        <NavLinkResponsive
-                                            url={route('profile.edit')}
-                                            title="Profile"
-                                            icon={IconUser}
-                                        />
-                                        <NavLinkResponsive url="#" title="Logout" icon={IconLogout} />
-                                    </nav>
-                                </nav>
+                                <SidebarResponsive />
                             </SheetContent>
                         </Sheet>
 
