@@ -15,8 +15,10 @@ import {
     IconUsers,
     IconVersions,
 } from '@tabler/icons-react';
+import NavLinkResponsive from '../../Components/NavLinkResponsive';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
-import NavLinkResponsive from '../Components/NavLinkResponsive';
+
 
 export default function SidebarResponsive() {
     return (
