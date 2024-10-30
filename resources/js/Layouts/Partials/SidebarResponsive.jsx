@@ -20,7 +20,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 
 
 
-export default function SidebarResponsive({url}) {
+export default function SidebarResponsive({url, auth}) {
     return (
         <nav className="grid gap-6 text-lg font-medium">
             <ApplicationLogo />

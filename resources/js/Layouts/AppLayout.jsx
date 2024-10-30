@@ -7,6 +7,7 @@ import { IconLayoutSidebar } from '@tabler/icons-react';
 import {
     Avatar,
     AvatarFallback,
+    AvatarImage,
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
@@ -24,6 +25,8 @@ import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 
 export default function AppLayout({ title, children }) {
+
+    const auth = usePage().props.auth.user;
 
     const {url} = usePage();
 
@@ -44,7 +47,7 @@ export default function AppLayout({ title, children }) {
                         </div>
 
                         <div className="flex-1">
-                            <Sidebar url={url}/>
+                            <Sidebar url={url} auth={auth}/>
                         </div>
                     </div>
                 </div>
@@ -72,7 +75,7 @@ export default function AppLayout({ title, children }) {
                                 </SheetHeader>
 
                                 {/* Sidebar Menu Responsive */}
-                                <SidebarResponsive url={url} />
+                                <SidebarResponsive url={url} auth={auth} />
                             </SheetContent>
                         </Sheet>
 
@@ -80,9 +83,10 @@ export default function AppLayout({ title, children }) {
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <Button variant="ghost" className="flex gap-x-2">
-                                    <span>Hi, Zgaphy</span>
+                                    <span>Hi, {auth.name}</span>
                                     <Avatar>
-                                        <AvatarFallback>B</AvatarFallback>
+                                        <AvatarImage src={auth.avatar}></AvatarImage>
+                                        <AvatarFallback>{auth.name.substring(0,1)}</AvatarFallback>
                                     </Avatar>
                                 </Button>
                             </DropdownMenuTrigger>
