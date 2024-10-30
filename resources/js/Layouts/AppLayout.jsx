@@ -25,10 +25,9 @@ import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 
 export default function AppLayout({ title, children }) {
-
     const auth = usePage().props.auth.user;
 
-    const {url} = usePage();
+    const { url } = usePage();
 
     return (
         <>
@@ -47,7 +46,7 @@ export default function AppLayout({ title, children }) {
                         </div>
 
                         <div className="flex-1">
-                            <Sidebar url={url} auth={auth}/>
+                            <Sidebar url={url} auth={auth} />
                         </div>
                     </div>
                 </div>
@@ -86,7 +85,7 @@ export default function AppLayout({ title, children }) {
                                     <span>Hi, {auth.name}</span>
                                     <Avatar>
                                         <AvatarImage src={auth.avatar}></AvatarImage>
-                                        <AvatarFallback>{auth.name.substring(0,1)}</AvatarFallback>
+                                        <AvatarFallback>{auth.name.substring(0, 1)}</AvatarFallback>
                                     </Avatar>
                                 </Button>
                             </DropdownMenuTrigger>
