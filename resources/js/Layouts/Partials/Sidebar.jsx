@@ -56,8 +56,14 @@ export default function Sidebar({ url, auth }) {
 
             <NavLink url="#" title="Discount" icon={IconDiscount}></NavLink>
             <NavLink url={route('profile.edit')} title="Profile" icon={IconUser}></NavLink>
-            <NavLink url={route('logout')} title="Logout" icon={IconLogout} method='post' as='button' className='w-full'></NavLink>
-
+            <NavLink
+                url={route('logout')}
+                title="Logout"
+                icon={IconLogout}
+                method="post"
+                as="button"
+                className="w-full"
+            ></NavLink>
         </nav>
     );
 }

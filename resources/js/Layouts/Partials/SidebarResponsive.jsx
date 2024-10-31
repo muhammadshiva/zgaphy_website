@@ -59,7 +59,14 @@ export default function SidebarResponsive({ url, auth }) {
 
                 <NavLinkResponsive url="#" title="Discount" icon={IconDiscount} />
                 <NavLinkResponsive url={route('profile.edit')} title="Profile" icon={IconUser} />
-                <NavLinkResponsive url={route('logout')} title="Logout" icon={IconLogout} method='post' as='button' className='w-full'></NavLinkResponsive>
+                <NavLinkResponsive
+                    url={route('logout')}
+                    title="Logout"
+                    icon={IconLogout}
+                    method="post"
+                    as="button"
+                    className="w-full"
+                ></NavLinkResponsive>
             </nav>
         </nav>
     );
