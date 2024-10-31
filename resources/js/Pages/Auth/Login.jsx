@@ -87,6 +87,7 @@ export default function Login({ status, canResetPassword }) {
                                             name="password"
                                             value={data.password}
                                             autoComplete="new-password"
+                                            placeholder="Enter your password"
                                             onChange={(e) => setData(e.target.name, e.target.value)}
                                         />
 
@@ -143,4 +144,4 @@ export default function Login({ status, canResetPassword }) {
     );
 }
 
-Login.layout = (page) => <GuestLayout children={page} title="login" />;
+Login.layout = (page) => <GuestLayout children={page} title="Login" />;
