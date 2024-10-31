@@ -20,7 +20,7 @@
 
     Route::get('testing', fn() => inertia('Testing'));
 
-    Route::controller(DashboardController::class)->middleware(['auth'])->group(function () {
+    Route::controller(DashboardController::class)->middleware(['auth', 'password.confirm'])->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
     });
 

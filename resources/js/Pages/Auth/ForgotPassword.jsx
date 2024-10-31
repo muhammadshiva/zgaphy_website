@@ -1,11 +1,11 @@
 import InputError from '@/Components/InputError';
 import GuestLayout from '@/Layouts/GuestLayout';
-import { Link, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 import ApplicationLogo from '../../Components/ApplicationLogo';
 import { Alert, AlertDescription } from '../../Components/ui/alert';
+import { Button } from '../../Components/ui/button';
 import { Input } from '../../Components/ui/input';
 import { Label } from '../../Components/ui/label';
-import { Button } from '../../Components/ui/button';
 
 export default function ForgotPassword({ status }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -44,10 +44,7 @@ export default function ForgotPassword({ status }) {
                             <form onSubmit={onHandleSubmit}>
                                 <div className="grid gap-4">
                                     <div className="grid gap-2">
-
-                                        <Label htmlFor="email">
-                                            Email
-                                        </Label>
+                                        <Label htmlFor="email">Email</Label>
 
                                         <Input
                                             id="email"
@@ -70,7 +67,7 @@ export default function ForgotPassword({ status }) {
                                         className="w-full"
                                         disabled={processing}
                                     >
-                                       Email Password Reset Link
+                                        Email Password Reset Link
                                     </Button>
                                 </div>
                             </form>
