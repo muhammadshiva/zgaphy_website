@@ -51,8 +51,6 @@ export default function Register() {
                                                 name="name"
                                                 value={data.name}
                                                 className="mt-1 block w-full"
-                                                autoComplete="name"
-                                                isFocused={true}
                                                 placeholder="Enter your name"
                                                 onChange={(e) => setData('name', e.target.value)}
                                                 required
@@ -146,9 +144,9 @@ export default function Register() {
 
                 <div className="hidden bg-muted lg:block">
                     <img
-                        src="/images/login"
+                        src="/images/login.png"
                         alt="login"
-                        className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
+                        className="lg:min-w-screen object-fill dark:brightness-[0.4] dark:grayscale lg:min-h-screen"
                     />
                 </div>
             </div>

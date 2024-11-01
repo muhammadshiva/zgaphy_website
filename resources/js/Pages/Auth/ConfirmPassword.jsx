@@ -40,7 +40,6 @@ export default function ConfirmPassword() {
                             name="password"
                             value={data.password}
                             placeholder="Enter your password"
-                            isFocused={true}
                             onChange={(e) => setData('password', e.target.value)}
                         />
 

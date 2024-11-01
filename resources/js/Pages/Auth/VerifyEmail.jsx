@@ -1,6 +1,8 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Link, useForm } from '@inertiajs/react';
+import ApplicationLogo from '../../Components/ApplicationLogo';
 import { Button } from '../../Components/ui/button';
+import { Alert, AlertDescription } from '../../Components/ui/alert';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
@@ -27,9 +29,7 @@ export default function VerifyEmail({ status }) {
                                     </AlertDescription>
                                 </Alert>
                             )}
-
                             <h1 className="text-3xl font-bold">Verify Email</h1>
-
                             <p className="text-balance text-muted-foreground">
                                 Thanks for signing up! Before getting started, could you verify your email address by
                                 clicking on the link we just emailed to you? If you didn't receive the email, we will
@@ -47,35 +47,28 @@ export default function VerifyEmail({ status }) {
                                     className="w-full"
                                     disabled={processing}
                                 >
-                                    Login
+                                    Verify Email Address
                                 </Button>
-
                             </div>
                         </form>
 
                         <div className="mt-4 text-center text-sm">
-                           <Link
-                            href={route('logout')}
-                            method='post'
-                            as='button'
-                            className='underline'
-                           >
-                            Logout
-                           </Link>
+                            <Link href={route('logout')} method="post" as="button" className="underline">
+                                Logout
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div className="hidden bg-muted lg:block">
                 <img
-                    src="/images/login"
+                    src="/images/login.png"
                     alt="login"
-                    className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
+                    className="lg:min-w-screen object-fill dark:brightness-[0.4] dark:grayscale lg:min-h-screen"
                 />
             </div>
         </div>
     );
 }
 
-VerifyEmail.layout = (page) => <GuestLayout layout={page} title="Verify Email" />;
+VerifyEmail.layout = (page) => <GuestLayout children={page} title="Register" />;

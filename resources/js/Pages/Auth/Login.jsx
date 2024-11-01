@@ -57,8 +57,6 @@ export default function Login({ status, canResetPassword }) {
                                         name="email"
                                         value={data.email}
                                         className="mt-1 block w-full"
-                                        autoComplete="username"
-                                        isFocused={true}
                                         placeholder="Enter your email"
                                         onChange={(e) => setData(e.target.name, e.target.value)}
                                     />
@@ -133,9 +131,9 @@ export default function Login({ status, canResetPassword }) {
 
             <div className="hidden bg-muted lg:block">
                 <img
-                    src="/images/login"
+                    src="/images/login.png"
                     alt="login"
-                    className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
+                    className="lg:min-w-screen object-fill dark:brightness-[0.4] dark:grayscale lg:min-h-screen"
                 />
             </div>
         </div>

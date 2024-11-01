@@ -1,10 +1,10 @@
 import InputError from '@/Components/InputError';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { useForm } from '@inertiajs/react';
+import ApplicationLogo from '../../Components/ApplicationLogo';
 import { Button } from '../../Components/ui/button';
 import { Input } from '../../Components/ui/input';
 import { Label } from '../../Components/ui/label';
-import ApplicationLogo from '../../Components/ApplicationLogo';
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -68,8 +68,6 @@ export default function ResetPassword({ token, email }) {
                                             name="password"
                                             value={data.password}
                                             className="mt-1 block w-full"
-                                            autoComplete="new-password"
-                                            isFocused={true}
                                             onChange={(e) => setData('password', e.target.value)}
                                         />
 
@@ -111,9 +109,9 @@ export default function ResetPassword({ token, email }) {
 
                 <div className="hidden bg-muted lg:block">
                     <img
-                        src="/images/login"
+                        src="/images/login.png"
                         alt="login"
-                        className="h-full w-full object-cover dark:brightness-[0.4] dark:grayscale"
+                        className="lg:min-w-screen object-fill dark:brightness-[0.4] dark:grayscale lg:min-h-screen"
                     />
                 </div>
             </div>
