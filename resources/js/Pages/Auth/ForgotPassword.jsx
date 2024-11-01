@@ -52,8 +52,6 @@ export default function ForgotPassword({ status }) {
                                             name="email"
                                             value={data.email}
                                             placeholder="Enter your email address"
-                                            isFocused={true}
-                                            autocomplete="username"
                                             onChange={(e) => setData('email', e.target.value)}
                                         />
 

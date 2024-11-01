@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/react';
 import { Button } from '../../Components/ui/button';
 import { Input } from '../../Components/ui/input';
 import { Label } from '../../Components/ui/label';
+import ApplicationLogo from '../../Components/ApplicationLogo';
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors, reset } = useForm({
