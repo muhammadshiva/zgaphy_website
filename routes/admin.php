@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])->premix('admin')->group(function () {
+Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::controller(CategoryController::class)->group(function () {
         Route::get('categories', 'index')->name('admin.categories.index');

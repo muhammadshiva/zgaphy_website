@@ -35,7 +35,12 @@ export default function Sidebar({ url, auth }) {
 
             <div className="px-3 py-2 text-sm font-semibold text-foreground">Master</div>
 
-            <NavLink url="#" title="Categories" icon={IconCategory}></NavLink>
+            <NavLink
+                url={route('admin.categories.index')}
+                active={url.startsWith('/admin/categories')}
+                title="Categories"
+                icon={IconCategory}
+            ></NavLink>
             <NavLink url="#" title="Artworks" icon={IconPaint}></NavLink>
             <NavLink url="#" title="Collectors" icon={IconBoxMultiple}></NavLink>
             <NavLink url="#" title="Users" icon={IconUsers}></NavLink>
