@@ -1,6 +1,6 @@
 import { Link, router } from '@inertiajs/react';
 import { AlertDialogTitle } from '@radix-ui/react-alert-dialog';
-import { IconArrowsDownUp, IconCategory, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
+import { IconArrowsDownUp, IconCategory, IconPencil, IconPlus, IconRefresh, IconTrash } from '@tabler/icons-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
@@ -84,6 +84,14 @@ export default function index(props) {
                                 ))}
                             </SelectContent>
                         </Select>
+                        <Button
+                            variant="red"
+                            onClick={() => setParams(props.state)}
+                            size='xl'
+                        >
+                            <IconRefresh className='size-4'/>
+                            Refresh
+                        </Button>
                     </div>
                 </CardHeader>
 
