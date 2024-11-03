@@ -20,11 +20,14 @@ class CategoryController extends Controller
     {
         $categories = Category::query()
             ->select(['id', 'name', 'slug', 'cover', 'created_at'])
-            ->get();
-
+            ->paginate(10);
 
         return inertia('Admin/Categories/Index', props: [
-            'categories' => CategoryResource::collection($categories),
+            'categories' => CategoryResource::collection($categories)->additional([
+                'meta' => [
+                    'has_pages' => $categories->hasPages(),
+                ]
+            ]),
             'page_settings' => [
                 'title' => 'Category',
                 'subtitle' => 'Show all categories data available',

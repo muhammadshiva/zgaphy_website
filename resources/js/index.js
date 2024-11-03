@@ -11,6 +11,7 @@ export * from './Components/ui/checkbox';
 export * from './Components/ui/dropdown-menu';
 export * from './Components/ui/input';
 export * from './Components/ui/label';
+export * from './Components/ui/pagination';
 export * from './Components/ui/sheet';
 export * from './Components/ui/sonner';
 export * from './Components/ui/table';

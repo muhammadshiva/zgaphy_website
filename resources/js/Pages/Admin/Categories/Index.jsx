@@ -15,12 +15,15 @@ import {
 } from '../../../Components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '../../../Components/ui/avatar';
 import { Button } from '../../../Components/ui/button';
-import { Card, CardContent } from '../../../Components/ui/card';
+import { Card, CardContent, CardFooter } from '../../../Components/ui/card';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '../../../Components/ui/pagination';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
 
 export default function index(props) {
+    const { data: categories, meta } = props.categories;
+
     return (
         <div className="flex w-full flex-col pb-32">
             <div className="mb-8 flex flex-col items-start justify-between gap-y-4 lg:flex-row lg:items-center">
@@ -53,9 +56,9 @@ export default function index(props) {
                         </TableHeader>
 
                         <TableBody>
-                            {props.categories.map((category, index) => (
+                            {categories.map((category, index) => (
                                 <TableRow key={index}>
-                                    <TableCell>{index + 1}</TableCell>
+                                    <TableCell>{index + 1 + (meta.current_page - 1) * meta.per_page}</TableCell>
                                     <TableCell>{category.name}</TableCell>
                                     <TableCell>{category.slug}</TableCell>
                                     <TableCell>
@@ -121,6 +124,28 @@ export default function index(props) {
                         </TableBody>
                     </Table>
                 </CardContent>
+                <CardFooter className="flex w-full flex-col items-center justify-between border-t py-2 lg:flex-row">
+                    <p className="mb-2 text-sm text-muted-foreground">
+                        Showing <span className="font-medium text-orange-500">{meta.from ?? 0}</span> from {meta.total}{' '}
+                        categories
+                    </p>
+
+                    <div className="overflow-x-auto">
+                        {meta.has_pages && (
+                            <Pagination>
+                                <PaginationContent className="flex flex-wrap justify-center lg:justify-end">
+                                    {meta.links.map((link, index) => (
+                                        <PaginationItem key={index} className="mx-1 mb-1 lg:mb-0">
+                                            <PaginationLink href={link.url} isActive={link.active}>
+                                                {link.label}
+                                            </PaginationLink>
+                                        </PaginationItem>
+                                    ))}
+                                </PaginationContent>
+                            </Pagination>
+                        )}
+                    </div>
+                </CardFooter>
             </Card>
         </div>
     );
