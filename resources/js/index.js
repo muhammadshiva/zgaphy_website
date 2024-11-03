@@ -16,6 +16,7 @@ export * from './Components/ui/sheet';
 export * from './Components/ui/sonner';
 export * from './Components/ui/table';
 export * from './Components/ui/textarea';
+export * from './Components/ui/select';
 export * from './Layouts/AppLayout';
 
 export * from './hooks/UseFilter';

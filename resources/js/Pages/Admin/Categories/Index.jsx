@@ -23,6 +23,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '.
 import { UseFilter } from '../../../hooks/UseFilter';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
 
 export default function index(props) {
     const { data: categories, meta } = props.categories;
@@ -61,6 +62,23 @@ export default function index(props) {
                             value={params?.search}
                             onChange={(e) => setParams((prev) => ({ ...prev, search: e.target.value }))}
                         />
+
+                        <Select value={params?.load} onValueChange={(e) => setParams({...params, load: e})}>
+                            <SelectTrigger className="w-full sm:w-24">
+                                <SelectValue placeholder="Load"/>
+                            </SelectTrigger>
+
+                            <SelectContent>
+                                {[10, 25, 50, 75, 100].map((number, index) => (
+                                    <SelectItem key={index} value={number}>
+                                        {number}
+                                    </SelectItem>
+                                ))}
+                            </SelectContent>
+
+                        </Select>
+
+
                     </div>
                 </CardHeader>
 
