@@ -1,6 +1,7 @@
-import { Link } from '@inertiajs/react';
+import { Link, router } from '@inertiajs/react';
 import { AlertDialogTitle } from '@radix-ui/react-alert-dialog';
 import { IconCategory, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
+import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
 import {
     AlertDialog,
@@ -17,6 +18,7 @@ import { Button } from '../../../Components/ui/button';
 import { Card, CardContent } from '../../../Components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
 import AppLayout from '../../../Layouts/AppLayout';
+import flashMessage from '../../../lib/utils';
 
 export default function index(props) {
     return (
@@ -92,7 +94,20 @@ export default function index(props) {
                                                         <AlertDialogCancel>Cancel</AlertDialogCancel>
 
                                                         <AlertDialogAction
-                                                            onClick={() => console.log('Delete Category')}
+                                                            onClick={() =>
+                                                                router.delete(
+                                                                    route('admin.categories.destroy', [category]),
+                                                                    {
+                                                                        preserveScroll: true,
+                                                                        preserveState: true,
+                                                                        onSuccess: (success) => {
+                                                                            const flash = flashMessage(success);
+
+                                                                            if (flash) toast[flash.type](flash.message);
+                                                                        },
+                                                                    },
+                                                                )
+                                                            }
                                                         >
                                                             Continue
                                                         </AlertDialogAction>
