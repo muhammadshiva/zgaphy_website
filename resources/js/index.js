@@ -13,4 +13,7 @@ export * from './Components/ui/input';
 export * from './Components/ui/label';
 export * from './Components/ui/sheet';
 export * from './Components/ui/table';
+export * from './Components/ui/sonner';
+export * from './Components/ui/textarea';
+export * from './lib/utils';
 export * from './Layouts/AppLayout';
