@@ -12,12 +12,12 @@ import { Textarea } from '../../../Components/ui/textarea';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
 
-export default function Create(props) {
+export default function Edit(props) {
     const fileInputCover = useRef(null);
 
     const { data, setData, reset, post, processing, errors } = useForm({
-        name: '',
-        description: '',
+        name: props.category.name ?? '',
+        description: props.category.description ?? '',
         cover: null,
         _method: props.page_settings.method,
     });
@@ -123,4 +123,4 @@ export default function Create(props) {
     );
 }
 
-Create.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;
+Edit.layout = (page) => <AppLayout children={page} title={page.props.page_settings.title} />;

@@ -3,6 +3,7 @@ import { Button } from '@/Components/ui/button';
 import { Head, Link, usePage } from '@inertiajs/react';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
 import { IconLayoutSidebar } from '@tabler/icons-react';
+import { Toaster } from 'sonner';
 import {
     Avatar,
     AvatarFallback,
@@ -20,7 +21,6 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '..';
-import { Toaster } from 'sonner';
 import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 
