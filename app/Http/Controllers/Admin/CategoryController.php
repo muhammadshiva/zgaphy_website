@@ -20,6 +20,12 @@ class CategoryController extends Controller
     {
         $categories = Category::query()
             ->select(['id', 'name', 'slug', 'cover', 'created_at'])
+            ->when(request()->search, function ($query, $value) {
+                $query->whereAny([
+                    'name',
+                    'slug',
+                ], 'REGEXP', $value);
+            })
             ->paginate(10);
 
         return inertia('Admin/Categories/Index', props: [
@@ -31,6 +37,10 @@ class CategoryController extends Controller
             'page_settings' => [
                 'title' => 'Category',
                 'subtitle' => 'Show all categories data available',
+            ],
+            'state' => [
+                'page' => request()->page ?? 1,
+                'search' => request()->search ?? '',
             ],
         ]);
     }

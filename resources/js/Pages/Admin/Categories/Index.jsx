@@ -1,6 +1,7 @@
 import { Link, router } from '@inertiajs/react';
 import { AlertDialogTitle } from '@radix-ui/react-alert-dialog';
 import { IconCategory, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
+import { useState } from 'react';
 import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
 import {
@@ -15,14 +16,24 @@ import {
 } from '../../../Components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '../../../Components/ui/avatar';
 import { Button } from '../../../Components/ui/button';
-import { Card, CardContent, CardFooter } from '../../../Components/ui/card';
+import { Card, CardContent, CardFooter, CardHeader } from '../../../Components/ui/card';
+import { Input } from '../../../Components/ui/input';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '../../../Components/ui/pagination';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
+import { UseFilter } from '../../../hooks/UseFilter';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
 
 export default function index(props) {
     const { data: categories, meta } = props.categories;
+
+    const [params, setParams] = useState(props.state);
+
+    UseFilter({
+        route: route('admin.categories.index'),
+        values: params,
+        only: ['categories'],
+    });
 
     return (
         <div className="flex w-full flex-col pb-32">
@@ -42,6 +53,17 @@ export default function index(props) {
             </div>
 
             <Card>
+                <CardHeader>
+                    <div className="flex w-full flex-col gap-4 lg:flex-row lg:items-center">
+                        <Input
+                            className="w-full sm:w-1/4"
+                            placeholder="Search..."
+                            value={params?.search}
+                            onChange={(e) => setParams((prev) => ({ ...prev, search: e.target.value }))}
+                        />
+                    </div>
+                </CardHeader>
+
                 <CardContent className="px-0 py-0 [&-td]:whitespace-nowrap [&_td]:px-6 [&_th]:px-6">
                     <Table className="w-full">
                         <TableHeader>
