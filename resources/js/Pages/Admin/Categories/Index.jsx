@@ -1,6 +1,6 @@
 import { Link, router } from '@inertiajs/react';
 import { AlertDialogTitle } from '@radix-ui/react-alert-dialog';
-import { IconCategory, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
+import { IconArrowsDownUp, IconCategory, IconPencil, IconPlus, IconTrash } from '@tabler/icons-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
@@ -19,16 +19,24 @@ import { Button } from '../../../Components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '../../../Components/ui/card';
 import { Input } from '../../../Components/ui/input';
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '../../../Components/ui/pagination';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
 import { UseFilter } from '../../../hooks/UseFilter';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
 
 export default function index(props) {
     const { data: categories, meta } = props.categories;
 
     const [params, setParams] = useState(props.state);
+
+    const onSortable = (field) => {
+        setParams({
+            ...params,
+            field: field,
+            direction: params.direction === 'asc' ? 'desc' : 'asc',
+        });
+    };
 
     UseFilter({
         route: route('admin.categories.index'),
@@ -63,9 +71,9 @@ export default function index(props) {
                             onChange={(e) => setParams((prev) => ({ ...prev, search: e.target.value }))}
                         />
 
-                        <Select value={params?.load} onValueChange={(e) => setParams({...params, load: e})}>
+                        <Select value={params?.load} onValueChange={(e) => setParams({ ...params, load: e })}>
                             <SelectTrigger className="w-full sm:w-24">
-                                <SelectValue placeholder="Load"/>
+                                <SelectValue placeholder="Load" />
                             </SelectTrigger>
 
                             <SelectContent>
@@ -75,10 +83,7 @@ export default function index(props) {
                                     </SelectItem>
                                 ))}
                             </SelectContent>
-
                         </Select>
-
-
                     </div>
                 </CardHeader>
 
@@ -86,11 +91,55 @@ export default function index(props) {
                     <Table className="w-full">
                         <TableHeader>
                             <TableRow>
-                                <TableHead>#</TableHead>
-                                <TableHead>Name</TableHead>
-                                <TableHead>Slug</TableHead>
+                                <TableHead>
+                                    <Button
+                                        variant="ghost"
+                                        className="group inline-flex"
+                                        onClick={() => onSortable('id')}
+                                    >
+                                        #
+                                        <span className="ml-2 flex-none rounded text-muted-foreground">
+                                            <IconArrowsDownUp className="size-4 text-muted-foreground" />
+                                        </span>
+                                    </Button>
+                                </TableHead>
+                                <TableHead>
+                                    <Button
+                                        variant="ghost"
+                                        className="group inline-flex"
+                                        onClick={() => onSortable('name')}
+                                    >
+                                        Name
+                                        <span className="ml-2 flex-none rounded text-muted-foreground">
+                                            <IconArrowsDownUp className="size-4 text-muted-foreground" />
+                                        </span>
+                                    </Button>
+                                </TableHead>
+                                <TableHead>
+                                    <Button
+                                        variant="ghost"
+                                        className="group inline-flex"
+                                        onClick={() => onSortable('slug')}
+                                    >
+                                        Slug
+                                        <span className="ml-2 flex-none rounded text-muted-foreground">
+                                            <IconArrowsDownUp className="size-4 text-muted-foreground" />
+                                        </span>
+                                    </Button>
+                                </TableHead>
                                 <TableHead>Cover</TableHead>
-                                <TableHead>Created at</TableHead>
+                                <TableHead>
+                                    <Button
+                                        variant="ghost"
+                                        className="group inline-flex"
+                                        onClick={() => onSortable('created_at')}
+                                    >
+                                        Created At
+                                        <span className="ml-2 flex-none rounded text-muted-foreground">
+                                            <IconArrowsDownUp className="size-4 text-muted-foreground" />
+                                        </span>
+                                    </Button>
+                                </TableHead>
                                 <TableHead>Action</TableHead>
                             </TableRow>
                         </TableHeader>
