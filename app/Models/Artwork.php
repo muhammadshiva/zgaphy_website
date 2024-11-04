@@ -22,6 +22,8 @@ class Artwork extends Model
         'frame_width',
         'frame_height',
         'category_id',
+        'qr_code_url',
+        'qr_code_image',
     ];
 
     public function collectors(): HasMany
