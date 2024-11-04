@@ -25,7 +25,11 @@ class ArtworkRequest extends FormRequest
 
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'category_id' => ['required', 'integer'],
+            'category_id' =>
+            [
+                'required',
+                'exists:categories,id'
+            ],
             'price' => ['required', 'numeric', 'min:0'],
             'image' => ['nullable', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
             'frame_width' => ['required', 'integer', 'min:0'],
