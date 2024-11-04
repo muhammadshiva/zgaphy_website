@@ -84,12 +84,8 @@ export default function index(props) {
                                 ))}
                             </SelectContent>
                         </Select>
-                        <Button
-                            variant="red"
-                            onClick={() => setParams(props.state)}
-                            size='xl'
-                        >
-                            <IconRefresh className='size-4'/>
+                        <Button variant="red" onClick={() => setParams(props.state)} size="xl">
+                            <IconRefresh className="size-4" />
                             Refresh
                         </Button>
                     </div>

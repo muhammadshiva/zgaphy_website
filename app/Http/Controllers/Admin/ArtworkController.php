@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ArtworkRequest;
 use App\Http\Resources\Admin\ArtworkResource;
 use App\Models\Artwork;
+use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
@@ -48,6 +49,7 @@ class ArtworkController extends Controller
                 'title' => 'Artwork',
                 'subtitle' => 'Show all artworks data available',
             ],
+
             'state' => [
                 'page' => request()->page ?? 1,
                 'search' => request()->search ?? '',
@@ -61,9 +63,15 @@ class ArtworkController extends Controller
         return inertia('Admin/Artworks/Create', props: [
             'page_settings' => [
                 'title' => 'Add Artwork',
-                'subtitle' => 'Add a new artwork. Click save after creating a new category',
+                'subtitle' => 'Add a new artwork. Click save after creating a new artwork.',
                 'method' => 'POST',
-                // 'action' => route('admin.categories.store')
+                'action' => route('admin.categories.store')
+            ],
+            'page_data' => [
+                'categories' => Category::query()->select(['id', 'name'])->get()->map(fn($item) => [
+                    'value' => $item->id,
+                    'label' => $item->name,
+                ])
             ],
         ]);
     }
