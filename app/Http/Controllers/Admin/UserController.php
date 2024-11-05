@@ -127,4 +127,17 @@ class UserController extends Controller
             return to_route('admin.users.index');
         }
     }
+
+    public function destroy(User $user): RedirectResponse
+    {
+        try {
+            $this->delete_file($user, 'avatar');
+            $user->delete();
+            flashMessage(MessageType::DELETED->message('User'));
+            return to_route('admin.users.index');
+        } catch (\Throwable $e) {
+            flashMessage(MessageType::ERROR->message(error: $e->getMessage()));
+            return to_route('admin.users.index');
+        }
+    }
 }
