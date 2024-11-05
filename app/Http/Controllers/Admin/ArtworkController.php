@@ -178,4 +178,19 @@ class ArtworkController extends Controller
             return to_route('admin.artworks.index');
         }
     }
+
+    public function destroy(Artwork $artwork): RedirectResponse
+    {
+        try {
+
+            $this->delete_file($artwork, 'cover');
+            $artwork->delete();
+
+            flashMessage(MessageType::DELETED->message('Artwork'));
+            return to_route('admin.artworks.index');
+        } catch (\Throwable $e) {
+            flashMessage(MessageType::ERROR->message(error: $e->getMessage()), 'error');
+            return to_route('admin.artworks.index');
+        }
+    }
 }
