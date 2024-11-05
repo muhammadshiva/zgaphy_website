@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\MessageType;
+use App\Enums\UserGender;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\UserRequest;
 use App\Http\Resources\Admin\UserResource;
 use App\Models\User;
+use App\Traits\HasFile;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Inertia\Response;
 
 
 class UserController extends Controller
 {
+    use HasFile;
     public function index(): Response
     {
         $user = User::query()
@@ -40,5 +47,42 @@ class UserController extends Controller
             ],
 
         ]);
+    }
+
+    public function create(): Response
+    {
+        return inertia('Admin/Users/Create', [
+            'page_settings' => [
+                'title' => 'Add User',
+                'subtitle' => 'Add a new User. Click save after creating a new User.',
+                'method' => 'POST',
+                'action' => route('admin.users.create'),
+            ],
+
+            'genders' => UserGender::options(),
+        ]);
+    }
+
+    public function store(UserRequest $request): RedirectResponse
+    {
+        try {
+            $user = User::create([
+                'name' => $name = $request->name,
+                'username' => usernameGenerator($name),
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => Hash::make(request()->password),
+                'gender' => $request->gender,
+                'date_of_birth' => $request->date_of_birth,
+                'address' => $request->address,
+                'avatar' => $this->upload_file($request, 'avatar', 'users'),
+            ]);
+
+            flashMessage(MessageType::CREATED->message('User'));
+            return to_route('admin.users.index');
+        } catch (\Throwable $e) {
+            flashMessage(MessageType::ERROR->message(error: $e->getMessage()));
+            return to_route('admin.users.index');
+        }
     }
 }

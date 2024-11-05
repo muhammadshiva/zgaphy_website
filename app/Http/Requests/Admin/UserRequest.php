@@ -60,7 +60,7 @@ class UserRequest extends FormRequest
 
             'avatar' => [
                 'nullable',
-                'mines:png,jpg',
+                'mimes:jpeg,png,jpg,webp',
                 'max:2048',
             ],
 
