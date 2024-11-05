@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArtworkController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CollectorController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,5 +39,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::controller(CollectorController::class)->group(function () {
         Route::get('collectors', 'index')->name('admin.collectors.index');
+    });
+
+    Route::controller(TransactionController::class)->group(function () {
+        Route::get('transactions', 'index')->name('admin.transactions.index');
+        Route::get('transactions/{artwork:artwork_code}/create', 'create')->name('admin.transactions.create');
+        Route::put('transactions/{artwork:artwork_code}/create', 'store')->name('admin.transactions.store');
+        Route::put('transactions/{transaction:transaction_code}/approve', 'approve')->name('admin.transactions.approve');
     });
 });
