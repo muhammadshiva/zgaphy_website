@@ -129,4 +129,53 @@ class ArtworkController extends Controller
 
         return 'ZG' . '.' . str()->slug($category->name) . '.' . $ordering;
     }
+
+
+    public function edit(Artwork $artwork): Response
+    {
+        return inertia('Admin/Artworks/Edit', props: [
+            'page_settings' => [
+                'title' => 'Edit Artwork',
+                'subtitle' => 'Edit an artwork. Click save after editing the artwork.',
+                'method' => 'PUT',
+                'action' => route('admin.artworks.edit', $artwork)
+            ],
+            'artwork' => $artwork,
+            'page_data' => [
+                'categories' => Category::query()->select(['id', 'name'])->get()->map(fn($item) => [
+                    'value' => $item->id,
+                    'label' => $item->name,
+                ])
+            ],
+        ]);
+    }
+
+    public function update(Artwork $artwork, ArtworkRequest $request): RedirectResponse
+    {
+        try {
+
+            $artwork->update([
+                'artwork_code' => $this->artworkCode(
+                    $request->category_id,
+                ),
+                'title' => $title = $request->title,
+                'slug' => $title !== $artwork->title ? str()->lower(str()->slug($title) . str()->random(4)) : $artwork->slug,
+                'cover' => $this->update_file($request, $artwork, 'cover', 'artworks'),
+                'description' => $request->description,
+                'price' => $request->price,
+                'series' => $request->series,
+                'frame_width' => $request->frame_width,
+                'frame_height' => $request->frame_height,
+                'category_id' => $request->category_id,
+                'qr_code_url' => $request->qr_code_url,
+                'qr_code_image' => $request->qr_code_image,
+            ]);
+
+            flashMessage(MessageType::UPDATED->message('Artwork'));
+            return to_route('admin.artworks.index');
+        } catch (\Throwable $e) {
+            flashMessage(MessageType::ERROR->message(error: $e->getMessage()), 'error');
+            return to_route('admin.artworks.index');
+        }
+    }
 }
