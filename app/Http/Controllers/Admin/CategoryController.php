@@ -66,7 +66,6 @@ class CategoryController extends Controller
             ]);
 
             flashMessage(MessageType::CREATED->message('Category'));
-
             return to_route('admin.categories.index');
         } catch (\Throwable $e) {
             flashMessage(MessageType::ERROR->message(error: $e->getMessage()), 'error');

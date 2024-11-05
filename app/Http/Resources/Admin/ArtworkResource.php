@@ -30,6 +30,7 @@ class ArtworkResource extends JsonResource
             'category' => [
                 'id' => $this->category?->id,
                 'name' => $this->category?->name,
+                'cover' => $this->category?->cover,
             ],
             'stock' => [
                 'available' => $this->stock?->available,

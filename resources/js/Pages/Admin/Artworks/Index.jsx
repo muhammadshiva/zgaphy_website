@@ -142,7 +142,7 @@ export default function index(props) {
                                     <TableCell>{artwork.series}</TableCell>
                                     <TableCell>{artwork.frame_width}</TableCell>
                                     <TableCell>{artwork.frame_height}</TableCell>
-                                    <TableCell>{artwork.category_id}</TableCell>
+                                    <TableCell>{artwork.category?.name}</TableCell>
                                     <TableCell>{artwork.qr_code_url}</TableCell>
                                     <TableCell>
                                         <Avatar>

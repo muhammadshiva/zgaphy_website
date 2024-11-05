@@ -36,9 +36,9 @@ class Artwork extends Model
         return $this->hasMany(Transaction::class);
     }
 
-    public function category(): HasOne
+    public function category(): BelongsTo
     {
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function stock(): HasOne

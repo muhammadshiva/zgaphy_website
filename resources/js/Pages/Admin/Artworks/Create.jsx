@@ -74,19 +74,6 @@ export default function Create(props) {
                 <CardContent className="p-6">
                     <form className="space-y-6" onSubmit={onHandleSubmit}>
                         <div className="grid w-full items-center gap-1">
-                            <Label htmlFor="artwork_code">Artwork Code</Label>
-                            <Input
-                                name="artwork_code"
-                                id="artwork_code"
-                                type="text"
-                                placeholder="Enter artwork code"
-                                value={data.artwork_code}
-                                onChange={onHandleChange}
-                            />
-                            {errors.artwork_code && <InputError message={errors.artwork_code} />}
-                        </div>
-
-                        <div className="grid w-full items-center gap-1">
                             <Label htmlFor="title">Title</Label>
                             <Input
                                 name="title"
@@ -210,31 +197,6 @@ export default function Create(props) {
                                 onChange={onHandleChange}
                             />
                             {errors.stock && <InputError message={errors.stock} />}
-                        </div>
-
-                        <div className="grid w-full items-center gap-1">
-                            <Label htmlFor="qr_code_url">QR Code URL</Label>
-                            <Input
-                                name="qr_code_url"
-                                id="qr_code_url"
-                                type="text"
-                                placeholder="Enter QR code URL"
-                                value={data.qr_code_url}
-                                onChange={onHandleChange}
-                            />
-                            {errors.qr_code_url && <InputError message={errors.qr_code_url} />}
-                        </div>
-
-                        <div className="grid w-full items-center gap-1">
-                            <Label htmlFor="qr_code_image">QR Code Image</Label>
-                            <Input
-                                name="qr_code_image"
-                                id="qr_code_image"
-                                type="file"
-                                onChange={(e) => setData('qr_code_image', e.target.files[0])}
-                                ref={fileInputQRCode}
-                            />
-                            {errors.qr_code_image && <InputError message={errors.qr_code_image} />}
                         </div>
 
                         <div className="flex justify-end gap-x-2">
