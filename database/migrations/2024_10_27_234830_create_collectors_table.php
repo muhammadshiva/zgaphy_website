@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('collectors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('collector_code');
+            $table->string('collector_code');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('artwork_id')->constrained('artworks')->cascadeOnDelete();
             $table->timestamps();

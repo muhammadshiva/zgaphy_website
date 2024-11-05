@@ -1,6 +1,6 @@
 import InputError from '@/Components/InputError';
 import { Link, useForm } from '@inertiajs/react';
-import { IconArrowLeft, IconCategory, IconUsersGroup } from '@tabler/icons-react';
+import { IconArrowLeft, IconUsersGroup } from '@tabler/icons-react';
 import { useRef } from 'react';
 import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
@@ -8,10 +8,9 @@ import { Button } from '../../../Components/ui/button';
 import { Card, CardContent } from '../../../Components/ui/card';
 import { Input } from '../../../Components/ui/input';
 import { Label } from '../../../Components/ui/label';
-import { Textarea } from '../../../Components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
 import AppLayout from '../../../Layouts/AppLayout';
 import flashMessage from '../../../lib/utils';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
 
 export default function Create(props) {
     const fileInputAvatar = useRef(null);
@@ -161,7 +160,6 @@ export default function Create(props) {
                             {errors.address && <InputError message={errors.address} />}
                         </div>
 
-
                         <div className="5 grid w-full items-center gap-1">
                             <Label htmlFor="avatar">Avatar</Label>
 
@@ -176,19 +174,13 @@ export default function Create(props) {
                             {errors.avatar && <InputError message={errors.avatar} />}
                         </div>
 
-
-
                         <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="gender">Gender</Label>
-                            <Select
-                                defaultValue={data.gender}
-                                onValueChange={(value) => setData('gender', value)}
-                            >
+                            <Select defaultValue={data.gender} onValueChange={(value) => setData('gender', value)}>
                                 <SelectTrigger>
                                     <SelectValue>
-                                        {props.genders.find(
-                                            (gender) => gender.value == data.gender,
-                                        )?.label ?? 'Choose a gender'}
+                                        {props.genders.find((gender) => gender.value == data.gender)?.label ??
+                                            'Choose a gender'}
                                     </SelectValue>
                                 </SelectTrigger>
 
@@ -203,7 +195,6 @@ export default function Create(props) {
 
                             {errors.gender && <InputError message={errors.gender} />}
                         </div>
-
 
                         <div className="flex justify-end gap-x-2">
                             <Button type="button" variant="ghost" size="lg" onClick={onHandleReset}>

@@ -264,18 +264,15 @@ export default function Index(props) {
 
                                                         <AlertDialogAction
                                                             onClick={() =>
-                                                                router.delete(
-                                                                    route('admin.users.destroy', [user]),
-                                                                    {
-                                                                        preserveScroll: true,
-                                                                        preserveState: true,
-                                                                        onSuccess: (success) => {
-                                                                            const flash = flashMessage(success);
+                                                                router.delete(route('admin.users.destroy', [user]), {
+                                                                    preserveScroll: true,
+                                                                    preserveState: true,
+                                                                    onSuccess: (success) => {
+                                                                        const flash = flashMessage(success);
 
-                                                                            if (flash) toast[flash.type](flash.message);
-                                                                        },
+                                                                        if (flash) toast[flash.type](flash.message);
                                                                     },
-                                                                )
+                                                                })
                                                             }
                                                         >
                                                             Continue

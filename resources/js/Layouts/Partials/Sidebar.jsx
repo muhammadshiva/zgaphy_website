@@ -47,7 +47,12 @@ export default function Sidebar({ url, auth }) {
                 title="Artworks"
                 icon={IconPaint}
             />
-            <NavLink url="#" title="Collectors" icon={IconBoxMultiple} />
+            <NavLink
+                url={route('admin.collectors.index')}
+                active={url.startsWith('/admin/collectors')}
+                title="Collectors"
+                icon={IconBoxMultiple}
+            />
             <NavLink
                 url={route('admin.users.index')}
                 active={url.startsWith('/admin/users')}
