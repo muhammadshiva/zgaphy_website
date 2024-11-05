@@ -85,4 +85,46 @@ class UserController extends Controller
             return to_route('admin.users.index');
         }
     }
+
+
+
+
+    public function edit(User $user): Response
+    {
+        return inertia('Admin/Users/Edit', [
+            'page_settings' => [
+                'title' => 'Edit User',
+                'subtitle' => 'Edit an user. Click save after editing an user.',
+                'method' => 'PUT',
+                'action' => route('admin.users.update', $user),
+            ],
+
+            'genders' => UserGender::options(),
+
+            'user' => $user,
+        ]);
+    }
+
+    public function update(User $user, UserRequest $request): RedirectResponse
+    {
+        try {
+            $user->update([
+                'name' => $name = $request->name,
+                'username' => usernameGenerator($name),
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => Hash::make(request()->password),
+                'gender' => $request->gender,
+                'date_of_birth' => $request->date_of_birth,
+                'address' => $request->address,
+                'avatar' => $this->update_file($request, $user, 'avatar', 'users'),
+            ]);
+
+            flashMessage(MessageType::UPDATED->message('User'));
+            return to_route('admin.users.index');
+        } catch (\Throwable $e) {
+            flashMessage(MessageType::ERROR->message(error: $e->getMessage()));
+            return to_route('admin.users.index');
+        }
+    }
 }
