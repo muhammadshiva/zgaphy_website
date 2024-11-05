@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\ArtworkRequest;
 use App\Http\Resources\Admin\ArtworkResource;
 use App\Models\Artwork;
 use App\Models\Category;
+use App\Models\Stock;
 use App\Traits\HasFile;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,9 +37,9 @@ class ArtworkController extends Controller
                 'qr_code_image',
                 'created_at',
             ])
+            ->with(['category', 'stock'])
             ->filter(request()->only(['search']))
             ->sorting(request()->only(['field', 'direction']))
-            ->with(['category'])
             ->latest('created_at')
             ->paginate(request()->load ?? 10)
             ->withQueryString();
@@ -83,7 +84,7 @@ class ArtworkController extends Controller
     {
         try {
 
-            Artwork::create([
+            $artwork = Artwork::create([
                 'artwork_code' => str()->random(6),
                 'title' => $title = $request->title,
                 'slug' => str()->lower(str()->slug($title) . str()->random(4)),

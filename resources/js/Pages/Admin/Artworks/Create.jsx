@@ -29,6 +29,7 @@ export default function Create(props) {
         category_id: null,
         qr_code_url: '',
         qr_code_image: null,
+        total: 0,
         _method: props.page_settings.method,
     });
 
@@ -164,7 +165,10 @@ export default function Create(props) {
 
                         <div className="grid w-full items-center gap-1.5">
                             <Label htmlFor="category_id">Category</Label>
-                            <Select defaultValue={data.category_id} onValueChange={(value) => setData('category_id', value)}>
+                            <Select
+                                defaultValue={data.category_id}
+                                onValueChange={(value) => setData('category_id', value)}
+                            >
                                 <SelectTrigger>
                                     <SelectValue>
                                         {props.page_data.categories.find(
@@ -186,17 +190,17 @@ export default function Create(props) {
                         </div>
 
                         <div className="grid w-full items-center gap-1">
-                            <Label htmlFor="stock">Stock</Label>
+                            <Label htmlFor="total">total</Label>
                             <Input
-                                name="stock"
-                                id="stock"
+                                name="total"
+                                id="total"
                                 type="number"
-                                placeholder="Enter total stock"
+                                placeholder="Enter total total"
                                 min="0"
-                                value={data.stock}
+                                value={data.total}
                                 onChange={onHandleChange}
                             />
-                            {errors.stock && <InputError message={errors.stock} />}
+                            {errors.total && <InputError message={errors.total} />}
                         </div>
 
                         <div className="flex justify-end gap-x-2">

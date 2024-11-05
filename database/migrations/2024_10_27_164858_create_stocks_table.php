@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('artwork_id')->constrained('artworks')->cascadeOnDelete();
+            $table->unsignedInteger('total')->default(0);
             $table->unsignedInteger('available')->default(0);
-            $table->unsignedInteger('only_produced')->default(0);
             $table->timestamps();
         });
     }

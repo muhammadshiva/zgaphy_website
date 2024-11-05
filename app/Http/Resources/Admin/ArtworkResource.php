@@ -33,8 +33,8 @@ class ArtworkResource extends JsonResource
                 'cover' => $this->category?->cover,
             ],
             'stock' => [
+                'total' => $this->stock?->total,
                 'available' => $this->stock?->available,
-                'only_produced' => $this->stock?->only_produced,
             ],
             'created_at' => $this->created_at->format('d M Y'),
             'qr_code_url' => $this->qr_code_url,

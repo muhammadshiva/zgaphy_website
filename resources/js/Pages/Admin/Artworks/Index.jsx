@@ -116,6 +116,7 @@ export default function index(props) {
                                 <TableHead>Series</TableHead>
                                 <TableHead>Frame Width</TableHead>
                                 <TableHead>Frame Height</TableHead>
+                                <TableHead>Total</TableHead>
                                 <TableHead>Category</TableHead>
                                 <TableHead>QR Code URL</TableHead>
                                 <TableHead>QR Code Image</TableHead>
@@ -138,16 +139,17 @@ export default function index(props) {
                                         </Avatar>
                                     </TableCell>
                                     <TableCell>{artwork.description}</TableCell>
-                                    <TableCell>{artwork.price}</TableCell>
+                                    <TableCell>Rp. {artwork.price}</TableCell>
                                     <TableCell>{artwork.series}</TableCell>
                                     <TableCell>{artwork.frame_width}</TableCell>
                                     <TableCell>{artwork.frame_height}</TableCell>
+                                    <TableCell>{artwork.stock?.total}</TableCell>
                                     <TableCell>{artwork.category?.name}</TableCell>
                                     <TableCell>{artwork.qr_code_url}</TableCell>
                                     <TableCell>
                                         <Avatar>
                                             <AvatarImage src={artwork.qr_code_image} />
-                                            <AvatarFallback>QR</AvatarFallback>
+                                            <AvatarFallback>{artwork.title.substring(0, 1)}</AvatarFallback>
                                         </Avatar>
                                     </TableCell>
                                     <TableCell>{artwork.created_at}</TableCell>

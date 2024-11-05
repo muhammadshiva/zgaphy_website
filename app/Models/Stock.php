@@ -9,8 +9,8 @@ class Stock extends Model
 {
     protected $fillable = [
         'artwork_id',
+        'total',
         'available',
-        'only_produced',
     ];
 
     public function artwork(): BelongsTo
