@@ -51,7 +51,12 @@ export default function SidebarResponsive({ url, auth }) {
                     icon={IconPaint}
                 />
                 <NavLinkResponsive url="#" title="Collectors" icon={IconBoxMultiple} />
-                <NavLinkResponsive url="#" title="Users" icon={IconUsers} />
+                <NavLinkResponsive
+                    url={route('admin.users.index')}
+                    active={url.startsWith('/admin/users')}
+                    title="Users"
+                    icon={IconUsers}
+                />
 
                 <div className="px-3 py-2 text-sm font-semibold text-foreground">Roles and Permission</div>
 
@@ -76,7 +81,7 @@ export default function SidebarResponsive({ url, auth }) {
                     method="post"
                     as="button"
                     className="w-full"
-                ></NavLinkResponsive>
+                />
             </nav>
         </nav>
     );
