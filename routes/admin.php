@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArtworkController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
@@ -22,5 +23,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
         Route::get('artworks/edit/{artwork}', 'edit')->name('admin.artworks.edit');
         Route::put('artworks/edit/{artwork}', 'update')->name('admin.artworks.update');
         Route::delete('artworks/destroy/{artwork}', 'destroy')->name('admin.artworks.destroy');
+    });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::get('users', 'index')->name('admin.users.index');
+        Route::get('users/create', 'create')->name('admin.users.create');
+        Route::post('users/create', 'store')->name('admin.users.store');
+        Route::get('users/edit/{user}', 'edit')->name('admin.users.edit');
+        Route::put('users/edit/{user}', 'update')->name('admin.users.update');
+        Route::delete('users/destroy/{user}', 'destroy')->name('admin.users.destroy');
     });
 });
