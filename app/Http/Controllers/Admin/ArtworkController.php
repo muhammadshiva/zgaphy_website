@@ -85,7 +85,9 @@ class ArtworkController extends Controller
         try {
 
             $artwork = Artwork::create([
-                'artwork_code' => str()->random(6),
+                'artwork_code' => $this->artworkCode(
+                    $request->category_id,
+                ),
                 'title' => $title = $request->title,
                 'slug' => str()->lower(str()->slug($title) . str()->random(4)),
                 'cover' => $this->upload_file($request, 'cover', 'artworks'),
@@ -105,5 +107,26 @@ class ArtworkController extends Controller
             flashMessage(MessageType::ERROR->message(error: $e->getMessage()), 'error');
             return to_route('admin.artworks.index');
         }
+    }
+
+    public function artworkCode(int $category_id): string
+    {
+
+        $category = Category::find($category_id);
+
+        $last_artwork = Artwork::query()
+            ->orderByDesc('artwork_code')
+            ->first();
+
+        $order = 1;
+
+        if ($last_artwork) {
+            $last_order = (int) substr($last_artwork->artwork_code, -4);
+            $order = $last_order + 1;
+        }
+
+        $ordering = str_pad($order, 4, '0', STR_PAD_LEFT);
+
+        return 'ZG' . '.' . str()->slug($category->name) . '.' . $ordering;
     }
 }
