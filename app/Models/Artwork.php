@@ -29,9 +29,9 @@ class Artwork extends Model
         'qr_code_image',
     ];
 
-    public function collectors(): HasMany
+    public function collector(): HasOne
     {
-        return $this->hasMany(Collector::class);
+        return $this->hasOne(Collector::class);
     }
 
     public function transactions(): HasMany
