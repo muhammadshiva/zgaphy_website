@@ -1,19 +1,6 @@
-import { Link, router } from '@inertiajs/react';
-import { AlertDialogTitle } from '@radix-ui/react-alert-dialog';
-import { IconArrowsDownUp, IconBoxMultiple, IconPencil, IconPlus, IconRefresh, IconTrash } from '@tabler/icons-react';
+import { IconArrowsDownUp, IconBoxMultiple, IconRefresh } from '@tabler/icons-react';
 import { useState } from 'react';
-import { toast } from 'sonner';
 import HeaderTitle from '../../../Components/HeaderTitle';
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTrigger,
-} from '../../../Components/ui/alert-dialog';
 import { Avatar, AvatarFallback, AvatarImage } from '../../../Components/ui/avatar';
 import { Button } from '../../../Components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '../../../Components/ui/card';
@@ -23,7 +10,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
 import { UseFilter } from '../../../hooks/UseFilter';
 import AppLayout from '../../../Layouts/AppLayout';
-import flashMessage from '../../../lib/utils';
 
 export default function index(props) {
     const { data: collectors, meta } = props.collectors;

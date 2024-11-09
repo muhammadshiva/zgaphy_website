@@ -1,5 +1,4 @@
 import forms from '@tailwindcss/forms';
-import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -14,7 +13,9 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
+                // poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+                poppins: ['Poppins', 'sans-serif'],
+                blaka: ['Blaka', 'cursive'],
             },
             borderRadius: {
                 lg: 'var(--radius)',

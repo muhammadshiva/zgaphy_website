@@ -2,6 +2,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.text-outline {
+    -webkit-text-stroke: 0.1px black; /* For webkit-based browsers */
+}
 @layer base {
     :root {
         --background: 0 0% 100%;
