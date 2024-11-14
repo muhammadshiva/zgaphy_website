@@ -1,9 +1,9 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
 import { Transition } from '@headlessui/react';
 import { Link, useForm, usePage } from '@inertiajs/react';
+import InputError from '../../../components/inertia/InputError';
+import InputLabel from '../../../components/inertia/InputLabel';
+import PrimaryButton from '../../../components/inertia/PrimaryButton';
+import TextInput from '../../../components/inertia/TextInput';
 
 export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }) {
     const user = usePage().props.auth.user;

@@ -1,15 +1,15 @@
 import { IconArrowsDownUp, IconBoxMultiple, IconRefresh } from '@tabler/icons-react';
 import { useState } from 'react';
-import HeaderTitle from '../../../Components/HeaderTitle';
-import { Avatar, AvatarFallback, AvatarImage } from '../../../Components/ui/avatar';
-import { Button } from '../../../Components/ui/button';
-import { Card, CardContent, CardFooter, CardHeader } from '../../../Components/ui/card';
-import { Input } from '../../../Components/ui/input';
-import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '../../../Components/ui/pagination';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../Components/ui/table';
+import HeaderTitle from '../../../components/inertia/HeaderTitle';
+import { Avatar, AvatarFallback, AvatarImage } from '../../../components/ui/avatar';
+import { Button } from '../../../components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader } from '../../../components/ui/card';
+import { Input } from '../../../components/ui/input';
+import { Pagination, PaginationContent, PaginationItem, PaginationLink } from '../../../components/ui/pagination';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
 import { UseFilter } from '../../../hooks/UseFilter';
-import AppLayout from '../../../Layouts/AppLayout';
+import AppLayout from '../../../layouts/Admin/AppLayout';
 
 export default function index(props) {
     const { data: collectors, meta } = props.collectors;

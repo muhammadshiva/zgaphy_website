@@ -18,8 +18,6 @@
     // Redirect to login page
     // Route::redirect('/', 'login');
 
-    Route::get('testing', fn() => inertia('Testing'));
-
     Route::controller(DashboardController::class)->middleware(['auth', 'verified'])->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
     });

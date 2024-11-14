@@ -1,10 +1,10 @@
-import InputError from '@/Components/InputError';
-import GuestLayout from '@/Layouts/GuestLayout';
 import { Link, useForm } from '@inertiajs/react';
-import ApplicationLogo from '../../Components/ApplicationLogo';
 import { Button } from '../../Components/ui/button';
 import { Input } from '../../Components/ui/input';
 import { Label } from '../../Components/ui/label';
+import ApplicationLogo from '../../components/inertia/ApplicationLogo';
+import InputError from '../../components/inertia/InputError';
+import GuestLayout from '../../layouts/Admin/GuestLayout';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({

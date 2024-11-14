@@ -1,4 +1,3 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
 import { Button } from '@/Components/ui/button';
 import { Head, Link, usePage } from '@inertiajs/react';
 import * as VisuallyHidden from '@radix-ui/react-visually-hidden';
@@ -20,7 +19,8 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from '..';
+} from '../..';
+import ApplicationLogo from '../../components/inertia/ApplicationLogo';
 import Sidebar from './Partials/Sidebar';
 import SidebarResponsive from './Partials/SidebarResponsive';
 

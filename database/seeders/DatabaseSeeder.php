@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => 'Zgaphy World',
                 'username' => 'zgaphyworld',
+                'role' => 'admin',
                 'email' => 'zgaphyworld@mail.com',
             ]
         );

@@ -29,6 +29,11 @@ class Artwork extends Model
         'qr_code_image',
     ];
 
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(Cart::class);
+    }
+
     public function collector(): HasOne
     {
         return $this->hasOne(Collector::class);

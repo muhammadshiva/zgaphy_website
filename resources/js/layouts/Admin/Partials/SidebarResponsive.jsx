@@ -1,4 +1,3 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
 import {
     IconBoxMultiple,
     IconCategory,
@@ -16,7 +15,8 @@ import {
     IconUsers,
     IconVersions,
 } from '@tabler/icons-react';
-import NavLinkResponsive from '../../Components/NavLinkResponsive';
+import ApplicationLogo from '../../../components/inertia/ApplicationLogo';
+import NavLinkResponsive from '../../../components/inertia/NavLinkResponsive';
 
 export default function SidebarResponsive({ url, auth }) {
     return (

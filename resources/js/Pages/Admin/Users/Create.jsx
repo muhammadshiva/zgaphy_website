@@ -1,15 +1,15 @@
-import InputError from '@/Components/InputError';
 import { Link, useForm } from '@inertiajs/react';
 import { IconArrowLeft, IconUsersGroup } from '@tabler/icons-react';
 import { useRef } from 'react';
 import { toast } from 'sonner';
-import HeaderTitle from '../../../Components/HeaderTitle';
-import { Button } from '../../../Components/ui/button';
-import { Card, CardContent } from '../../../Components/ui/card';
-import { Input } from '../../../Components/ui/input';
-import { Label } from '../../../Components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../Components/ui/select';
-import AppLayout from '../../../Layouts/AppLayout';
+import HeaderTitle from '../../../components/inertia/HeaderTitle';
+import InputError from '../../../components/inertia/InputError';
+import { Button } from '../../../components/ui/button';
+import { Card, CardContent } from '../../../components/ui/card';
+import { Input } from '../../../components/ui/input';
+import { Label } from '../../../components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../../components/ui/select';
+import AppLayout from '../../../layouts/Admin/AppLayout';
 import flashMessage from '../../../lib/utils';
 
 export default function Create(props) {

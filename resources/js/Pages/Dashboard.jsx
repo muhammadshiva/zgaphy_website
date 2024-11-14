@@ -1,7 +1,7 @@
-import AppLayout from '../Layouts/AppLayout';
+import AppLayout from '../layouts/Admin/AppLayout';
 
 export default function Dashboard() {
-    return <div>Ini dashboard</div>;
+    return <div>Dashboard</div>;
 }
 
 Dashboard.layout = (page) => <AppLayout children={page} title="Dashboard" />;

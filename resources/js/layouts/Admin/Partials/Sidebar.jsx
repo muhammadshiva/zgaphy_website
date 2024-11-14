@@ -15,7 +15,7 @@ import {
     IconUsers,
     IconVersions,
 } from '@tabler/icons-react';
-import NavLink from '../../Components/NavLink';
+import NavLink from '../../../components/inertia/NavLink';
 
 export default function Sidebar({ url, auth }) {
     return (
